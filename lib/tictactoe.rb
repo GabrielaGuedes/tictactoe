@@ -14,9 +14,9 @@ class Game
     board.print_board
     puts 'Enter [0-8]:'
     # loop through until the game was won or tied
-    until board.game_is_over || board.tie
+    until board.game_is_over_with_winner? || board.tie?
       get_human_spot
-      eval_board if !board.game_is_over && !board.tie
+      eval_board if !board.game_is_over_with_winner? && !board.tie?
       board.print_board
     end
     puts 'Game over'
@@ -59,13 +59,13 @@ class Game
     end
     available_spaces.each do |as|
       board.fill_spot(as.to_i, @com)
-      if board.game_is_over
+      if board.game_is_over_with_winner?
         best_move = as.to_i
         board.fill_spot(as.to_i, as)
         return best_move
       else
         board.fill_spot(as.to_i, @hum)
-        if board.game_is_over
+        if board.game_is_over_with_winner?
           best_move = as.to_i
           board.fill_spot(as.to_i, as)
           return best_move

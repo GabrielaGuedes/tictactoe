@@ -37,11 +37,11 @@ module Tictactoe
       matrix.value_at_array_position(CENTER_SPOT_INDEX) == '4'
     end
 
-    def game_is_over
+    def game_is_over_with_winner?
       any_line_won?(:column) || any_line_won?(:row) || any_line_won?(:diagonal)
     end
 
-    def tie
+    def tie?
       matrix.all? { |s| %w[X O].include?(s) }
     end
 
