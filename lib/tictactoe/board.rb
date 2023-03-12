@@ -1,40 +1,58 @@
+require_relative '../utils/matrix.rb'
+
 module Tictactoe
   class Board
-    attr_accessor :spots
+    CENTER_SPOT_INDEX = 4
+
+    attr_accessor :matrix
 
     def initialize
-      @spots = %w[0 1 2 3 4 5 6 7 8]
+      @matrix = Utils::Matrix[%w[0 1 2], %w[3 4 5], %w[6 7 8]]
     end
 
-    def print
-      puts " #{spots[0]} | #{spots[1]} | #{spots[2]} \n===+===+===\n #{spots[3]} | #{spots[4]} | #{spots[5]} \n===+===+===\n #{spots[6]} | #{spots[7]} | #{spots[8]} \n"
+    def print_board
+      puts " \n===+===+=== "
+      matrix.row_vectors.each do |row|
+        row.each do |spot|
+          print " #{spot} |"
+        end
+        print "\b"
+        puts " \n===+===+=== "
+      end
     end
 
     def filled_spot?(spot_index)
-      spots[spot_index] != 'X' && spots[spot_index] != 'O'
+      matrix.value_at_array_position(spot_index) != 'X' && matrix.value_at_array_position(spot_index) != 'O'
     end
 
     def fill_spot(spot_index, marker)
-      spots[spot_index] = marker
+      matrix.assign_value_to_array_position(marker, spot_index)
+    end
+
+    def to_a
+      matrix.to_a.flatten
     end
 
     def center_spot_available?
-      spots[4] == '4'
+      matrix.value_at_array_position(CENTER_SPOT_INDEX) == '4'
     end
 
     def game_is_over
-      [spots[0], spots[1], spots[2]].uniq.length == 1 ||
-        [spots[3], spots[4], spots[5]].uniq.length == 1 ||
-        [spots[6], spots[7], spots[8]].uniq.length == 1 ||
-        [spots[0], spots[3], spots[6]].uniq.length == 1 ||
-        [spots[1], spots[4], spots[7]].uniq.length == 1 ||
-        [spots[2], spots[5], spots[8]].uniq.length == 1 ||
-        [spots[0], spots[4], spots[8]].uniq.length == 1 ||
-        [spots[2], spots[4], spots[6]].uniq.length == 1
+      any_line_won?(:column) || any_line_won?(:row) || any_line_won?(:diagonal)
     end
 
     def tie
-      spots.all? { |s| %w[X O].include?(s) }
+      matrix.all? { |s| %w[X O].include?(s) }
+    end
+
+    private
+
+    def any_line_won?(line_type)
+      line_vectors_method = "#{line_type.to_s}_vectors".to_sym
+
+      matrix.send(line_vectors_method).filter do |line|
+        line.uniq.length == 1
+      end.any?
     end
   end
 end
