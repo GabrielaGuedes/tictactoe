@@ -26,7 +26,7 @@ class Game
     spot = nil
     until spot
       spot = gets.chomp.to_i
-      if board.filled_spot?(spot)
+      if board.empty_spot?(spot)
         board.fill_spot(spot, @hum)
       else
         spot = nil
@@ -42,7 +42,7 @@ class Game
         board.fill_spot(spot, @com)
       else
         spot = get_best_move
-        if board.filled_spot?(spot)
+        if board.empty_spot?(spot)
           board.fill_spot(spot, @com)
         else
           spot = nil

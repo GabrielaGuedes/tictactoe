@@ -21,7 +21,7 @@ module Tictactoe
       end
     end
 
-    def filled_spot?(spot_index)
+    def empty_spot?(spot_index)
       matrix.value_at_array_position(spot_index) != 'X' && matrix.value_at_array_position(spot_index) != 'O'
     end
 
