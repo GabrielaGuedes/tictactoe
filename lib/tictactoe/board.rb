@@ -3,6 +3,7 @@ require_relative '../utils/matrix.rb'
 module Tictactoe
   class Board
     CENTER_SPOT_INDEX = 4
+    MARKERS = %w[X O]
 
     attr_accessor :matrix
 
@@ -11,18 +12,18 @@ module Tictactoe
     end
 
     def print_board
-      puts " \n===+===+=== "
+      puts row_separator
       matrix.row_vectors.each do |row|
         row.each do |spot|
           print " #{spot} |"
         end
         print "\b"
-        puts " \n===+===+=== "
+        puts row_separator
       end
     end
 
     def empty_spot?(spot_index)
-      matrix.value_at_array_position(spot_index) != 'X' && matrix.value_at_array_position(spot_index) != 'O'
+      !MARKERS.include? matrix.value_at_array_position(spot_index)
     end
 
     def fill_spot(spot_index, marker)
@@ -42,7 +43,7 @@ module Tictactoe
     end
 
     def tie?
-      matrix.all? { |s| %w[X O].include?(s) }
+      matrix.all? { |s| MARKERS.include?(s) }
     end
 
     private
@@ -53,6 +54,10 @@ module Tictactoe
       matrix.send(line_vectors_method).filter do |line|
         line.uniq.length == 1
       end.any?
+    end
+
+    def row_separator
+      " \n===+===+=== "
     end
   end
 end
