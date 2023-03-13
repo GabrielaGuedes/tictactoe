@@ -1,10 +1,13 @@
 require_relative './tictactoe/board.rb'
+require_relative './tictactoe/human_player.rb'
 
 class Game
-  attr_accessor :board
+
+  attr_accessor :board, :player_one
 
   def initialize
     @board = Tictactoe::Board.new
+    @player_one = Tictactoe::HumanPlayer.new(Tictactoe::Board::MARKERS[1], board)
     @com = 'X' # the computer's marker
     @hum = 'O' # the user's marker
   end
@@ -15,23 +18,11 @@ class Game
     puts 'Enter [0-8]:'
     # loop through until the game was won or tied
     until board.game_is_over_with_winner? || board.tie?
-      get_human_spot
+      player_one.play_turn
       eval_board if !board.game_is_over_with_winner? && !board.tie?
       board.print_board
     end
     puts 'Game over'
-  end
-
-  def get_human_spot
-    spot = nil
-    until spot
-      spot = gets.chomp.to_i
-      if board.empty_spot?(spot)
-        board.fill_spot(spot, @hum)
-      else
-        spot = nil
-      end
-    end
   end
 
   def eval_board
