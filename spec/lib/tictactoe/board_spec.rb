@@ -169,4 +169,49 @@ RSpec.describe Tictactoe::Board do
       end
     end
   end
+
+  describe '#available_spots' do
+    subject(:available_spots) { board.available_spots }
+    let(:board_size) { 9 }
+
+    context 'when board is all empty' do
+      it 'returns all the spots' do
+        expect(available_spots.length).to eq(board_size)
+      end
+    end
+
+    context 'when board is partially filled' do
+      let(:number_of_spots_filled) { 5 }
+
+      before do
+        board.fill_spot(0, 'X')
+        board.fill_spot(1, 'O')
+        board.fill_spot(2, 'X')
+        board.fill_spot(6, 'O')
+        board.fill_spot(8, 'O')
+      end
+
+      it 'returns only available spots' do
+        expect(available_spots.length).to eq(board_size - number_of_spots_filled)
+      end
+    end
+
+    context 'when board is fulfilled' do
+      before do
+        board.fill_spot(0, 'X')
+        board.fill_spot(1, 'O')
+        board.fill_spot(2, 'X')
+        board.fill_spot(3, 'X')
+        board.fill_spot(4, 'X')
+        board.fill_spot(5, 'O')
+        board.fill_spot(6, 'O')
+        board.fill_spot(7, 'X')
+        board.fill_spot(8, 'O')
+      end
+
+      it 'returns 0' do
+        expect(available_spots.length).to eq(0)
+      end
+    end
+  end
 end

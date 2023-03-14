@@ -35,7 +35,7 @@ module Tictactoe
     end
 
     def center_spot_available?
-      matrix.value_at_array_position(CENTER_SPOT_INDEX) == '4'
+      available_spots.include? CENTER_SPOT_INDEX
     end
 
     def game_is_over_with_winner?
@@ -44,6 +44,14 @@ module Tictactoe
 
     def tie?
       matrix.all? { |s| MARKERS.include?(s) }
+    end
+
+    def available_spots
+      to_a.filter_map.with_index { |_spot, index| index if empty_spot?(index) }
+    end
+
+    def random_available_spot
+      available_spots.sample.to_i
     end
 
     private
