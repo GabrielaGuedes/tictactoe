@@ -3,8 +3,11 @@ require_relative './tictactoe/human_player.rb'
 require_relative './tictactoe/computer_player.rb'
 
 class Game
-
   attr_accessor :board, :player_one, :player_two
+
+  def self.start_game
+    new.start_game
+  end
 
   def initialize
     @board = Tictactoe::Board.new
@@ -13,17 +16,25 @@ class Game
   end
 
   def start_game
-    # start by printing the board
-    board.print_board
-    puts 'Enter [0-8]:'
-    # loop through until the game was won or tied
-    until board.game_is_over_with_winner? || board.tie?
-      player_one.play_turn
-      player_two.play_turn if !board.game_is_over_with_winner? && !board.tie?
-      board.print_board
-    end
+    print_game_start
+    run_game while !game_finished?
     puts 'Game over'
   end
-end
 
-Game.new.start_game
+  private
+
+  def print_game_start
+    board.print_board
+    puts 'Enter [0-8]:'
+  end
+
+  def run_game
+    player_one.play_turn
+    player_two.play_turn if !game_finished?
+    board.print_board
+  end
+
+  def game_finished?
+    board.game_is_over_with_winner? || board.tie?
+  end
+end
