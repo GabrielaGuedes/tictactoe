@@ -9,7 +9,7 @@ module Tictactoe
     end
 
     def play_turn
-      raise NotImplementedError
+      fill_spot(spot)
     end
 
     private

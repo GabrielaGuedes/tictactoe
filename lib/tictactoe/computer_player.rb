@@ -4,10 +4,6 @@ require_relative './board.rb'
 module Tictactoe
   class ComputerPlayer < Player
 
-    def play_turn
-      fill_spot(spot)
-    end
-
     private
 
     def spot

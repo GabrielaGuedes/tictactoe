@@ -3,10 +3,6 @@ require_relative './player.rb'
 module Tictactoe
   class HumanPlayer < Player
 
-    def play_turn
-      fill_spot(spot)
-    end
-
     private
     
     def spot
