@@ -30,7 +30,33 @@ RSpec.describe Tictactoe::HumanPlayer do
 
       it 'asks the input again and fill the other [correct] spot' do
         allow(human_player).to receive(:gets).and_return(busy_spot, correct_spot)
-        expect { play_turn }.to change { board.to_a[correct_spot.to_i] }.to(marker)        
+        expect { play_turn }.to change { board.to_a[correct_spot.to_i] }.to(marker)
+      end
+    end
+
+    context 'when spot is not in range 0-8' do
+      let(:outside_range_spot) { '12' }
+      let(:correct_spot) { '3' }
+
+      subject(:play_turn) { human_player.play_turn }
+
+      it 'asks the input again' do
+        allow(human_player).to receive(:gets).and_return(outside_range_spot, correct_spot)
+        expect { play_turn }.to change { board.to_a[correct_spot.to_i] }.to(marker)
+        expect(board.available_spots.length).to eq(8)
+      end
+    end
+
+    context 'when spot is not a number' do
+      let(:invalid_spot) { 'a' }
+      let(:correct_spot) { '3' }
+
+      subject(:play_turn) { human_player.play_turn }
+
+      it 'asks the input again' do
+        allow(human_player).to receive(:gets).and_return(invalid_spot, correct_spot)
+        expect { play_turn }.to change { board.to_a[correct_spot.to_i] }.to(marker)
+        expect(board.available_spots.length).to eq(8)
       end
     end
   end
