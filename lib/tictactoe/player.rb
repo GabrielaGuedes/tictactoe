@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Tictactoe
   class Player
     attr_accessor :marker, :board

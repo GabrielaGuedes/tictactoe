@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './board'
 require_relative './human_player'
 require_relative './easy_computer_player'
@@ -8,8 +10,8 @@ module Tictactoe
   class Game
     attr_accessor :board, :player_one, :player_two
 
-    DIFFICULTS = %w[Easy Medium Hard]
-    MODES = %w[HumanVsHuman HumanVsComputer ComputerVsComputer]
+    DIFFICULTS = %w[Easy Medium Hard].freeze
+    MODES = %w[HumanVsHuman HumanVsComputer ComputerVsComputer].freeze
 
     def self.start
       puts "Select your mode: \n0. Human vs. Human\n1. Human vs. Computer\n2. Computer vs. Computer"

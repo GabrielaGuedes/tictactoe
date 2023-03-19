@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require_relative '../utils/matrix'
 
 module Tictactoe
   class Board
     CENTER_SPOT_INDEX = 4
-    MARKERS = %w[X O]
+    MARKERS = %w[X O].freeze
 
     attr_accessor :matrix
 

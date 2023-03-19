@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../../lib/tictactoe/computer_player'
 require_relative '../../../lib/tictactoe/board'
 

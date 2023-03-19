@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../../lib/utils/matrix'
 
 RSpec.describe Utils::Matrix do
