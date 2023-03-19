@@ -12,5 +12,13 @@ module Tictactoe
       @player_one = Tictactoe::HumanPlayer.new(Tictactoe::Board::MARKERS[1], board)
       @player_two = eval("Tictactoe::#{Game::DIFFICULTS[difficult]}ComputerPlayer").new(Tictactoe::Board::MARKERS[0], board)
     end
+
+    private
+
+    def run_game
+      player_one.play_turn
+      player_two.play_turn unless game_finished?
+      board.print_board
+    end
   end
 end

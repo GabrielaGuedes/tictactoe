@@ -36,9 +36,7 @@ module Tictactoe
     end
 
     def run_game
-      player_one.play_turn
-      player_two.play_turn unless game_finished?
-      board.print_board
+      raise NotImplementedError
     end
 
     def game_finished?
