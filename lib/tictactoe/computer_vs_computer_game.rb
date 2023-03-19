@@ -17,10 +17,11 @@ module Tictactoe
 
     def run_game
       player_one.play_turn
+      board.print_board
       sleep 1
       player_two.play_turn unless game_finished?
-      sleep 1
       board.print_board
+      sleep 1
     end
   end
 end
