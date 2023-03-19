@@ -6,49 +6,23 @@ RSpec.describe Tictactoe::ComputerPlayer do
   let(:other_marker) { Tictactoe::Board::MARKERS[1] }
   let(:board) { Tictactoe::Board.new }
   let(:computer_player) { described_class.new(marker, board) }
+  let(:center_spot) { Tictactoe::Board::CENTER_SPOT_INDEX }
+  subject(:play_turn) { computer_player.play_turn }
 
   describe '#play_turn' do
-    context 'when computer is about to win' do
-      let(:spot) { '2' }
-
-      subject(:play_turn) { computer_player.play_turn }
-
+    context 'when center spot is filled' do
       before do
-        board.fill_spot(0, marker)            #  X  X  .
-        board.fill_spot(1, marker)            #  .  O  .
-        board.fill_spot(4, other_marker)      #  .  O  .
-        board.fill_spot(7, other_marker)
+        board.fill_spot(center_spot, other_marker)
       end
-
-      it 'wins the game' do
-        expect { play_turn }.to change { board.to_a[spot.to_i] }.to(marker)
-        expect(board.game_is_over_with_winner?).to eq(true)
+  
+      it 'raises not implemented error' do
+        expect { play_turn }.to raise_error(NotImplementedError)
       end
     end
 
-    context 'when other player is about to win' do
-      let(:spot) { '2' }
-
-      subject(:play_turn) { computer_player.play_turn }
-
-      before do
-        board.fill_spot(0, marker)        #  X  .  .
-        board.fill_spot(4, marker)        #  .  X  O
-        board.fill_spot(5, other_marker)  #  .  .  O
-        board.fill_spot(8, other_marker)
-      end
-
-      it 'prevents the enemy of winning the game' do
-        expect { play_turn }.to change { board.to_a[spot.to_i] }.to(marker)
-        expect(board.game_is_over_with_winner?).to eq(false)
-      end
-    end
-
-    context 'when no one is about to win' do
-      subject(:play_turn) { computer_player.play_turn }
-
-      it 'just fills a random spot' do
-        expect { play_turn }.to change { board.available_spots.length }.by(-1)
+    context 'when center spot is not yet filled' do  
+      it 'fills center spot' do
+        expect { play_turn }.to change { board.to_a[center_spot] }.to(marker)
       end
     end
   end

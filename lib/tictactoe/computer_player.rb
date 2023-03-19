@@ -13,13 +13,21 @@ module Tictactoe
     end
 
     def get_best_move
+      raise NotImplementedError
+    end
+
+    def smart_spot
       board.available_spots.each do |available_spot|
         return available_spot if self_wins_with_spot?(available_spot) || enemy_wins_with_spot?(available_spot)
 
         reset_board(available_spot)
       end
 
-      board.random_available_spot      
+      nil
+    end
+
+    def random_spot
+      board.random_available_spot
     end
 
     def self_wins_with_spot?(available_spot)
