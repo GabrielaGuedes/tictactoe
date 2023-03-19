@@ -1,10 +1,10 @@
-require_relative '../../../lib/tictactoe/game.rb'
-require_relative '../../../lib/tictactoe/human_vs_human_game.rb'
-require_relative '../../../lib/tictactoe/human_vs_computer_game.rb'
-require_relative '../../../lib/tictactoe/computer_vs_computer_game.rb'
-require_relative '../../../lib/tictactoe/computer_player.rb'
-require_relative '../../../lib/tictactoe/human_player.rb'
-require_relative '../../../lib/tictactoe/board.rb'
+require_relative '../../../lib/tictactoe/game'
+require_relative '../../../lib/tictactoe/human_vs_human_game'
+require_relative '../../../lib/tictactoe/human_vs_computer_game'
+require_relative '../../../lib/tictactoe/computer_vs_computer_game'
+require_relative '../../../lib/tictactoe/computer_player'
+require_relative '../../../lib/tictactoe/human_player'
+require_relative '../../../lib/tictactoe/board'
 
 RSpec.describe Tictactoe::Game do
   describe '#self.start' do
@@ -34,7 +34,7 @@ RSpec.describe Tictactoe::Game do
           self_start
         end
       end
-  
+
       context 'when selecting medium computer' do
         let(:difficult) { '1' }
 
@@ -45,7 +45,7 @@ RSpec.describe Tictactoe::Game do
           self_start
         end
       end
-  
+
       context 'when selecting hard computer' do
         let(:difficult) { '2' }
 

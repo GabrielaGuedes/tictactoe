@@ -1,12 +1,11 @@
-require_relative './player.rb'
+require_relative './player'
 
 module Tictactoe
   class HumanPlayer < Player
-
     VALID_INPUT_REGEX = /^[0-8]{1}$/
 
     private
-    
+
     def spot
       puts 'Enter [0-8]:'
       chosen_spot = gets.chomp

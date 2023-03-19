@@ -1,9 +1,8 @@
-require_relative './player.rb'
-require_relative './board.rb'
+require_relative './player'
+require_relative './board'
 
 module Tictactoe
   class ComputerPlayer < Player
-
     private
 
     def spot
@@ -32,12 +31,12 @@ module Tictactoe
 
     def self_wins_with_spot?(available_spot)
       fill_spot(available_spot)
-      return board.game_is_over_with_winner?
+      board.game_is_over_with_winner?
     end
 
     def enemy_wins_with_spot?(available_spot)
       board.fill_spot(available_spot, other_player_marker)
-      return board.game_is_over_with_winner?
+      board.game_is_over_with_winner?
     end
 
     def reset_board(available_spot)

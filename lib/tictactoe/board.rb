@@ -1,4 +1,4 @@
-require_relative '../utils/matrix.rb'
+require_relative '../utils/matrix'
 
 module Tictactoe
   class Board
@@ -57,7 +57,7 @@ module Tictactoe
     private
 
     def any_line_won?(line_type)
-      line_vectors_method = "#{line_type.to_s}_vectors".to_sym
+      line_vectors_method = "#{line_type}_vectors".to_sym
 
       matrix.send(line_vectors_method).filter do |line|
         line.uniq.length == 1

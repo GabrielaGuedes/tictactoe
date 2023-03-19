@@ -1,5 +1,5 @@
-require_relative '../../../lib/tictactoe/easy_computer_player.rb'
-require_relative '../../../lib/tictactoe/board.rb'
+require_relative '../../../lib/tictactoe/easy_computer_player'
+require_relative '../../../lib/tictactoe/board'
 
 RSpec.describe Tictactoe::EasyComputerPlayer do
   let(:marker) { Tictactoe::Board::MARKERS[0] }

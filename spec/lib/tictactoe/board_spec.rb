@@ -1,4 +1,4 @@
-require_relative '../../../lib/tictactoe/board.rb'
+require_relative '../../../lib/tictactoe/board'
 
 RSpec.describe Tictactoe::Board do
   let(:board) { described_class.new }
@@ -17,7 +17,7 @@ RSpec.describe Tictactoe::Board do
         expect(empty_spot).to eq(false)
       end
     end
-    
+
     context 'when position is not filled' do
       let(:index) { 7 }
 
@@ -56,7 +56,7 @@ RSpec.describe Tictactoe::Board do
 
       it 'returns false' do
         expect(center_spot_available).to eq(false)
-      end      
+      end
     end
 
     context 'when it is not filled' do

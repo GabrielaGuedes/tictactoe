@@ -1,8 +1,7 @@
-require_relative './computer_player.rb'
+require_relative './computer_player'
 
 module Tictactoe
   class EasyComputerPlayer < ComputerPlayer
-
     private
 
     def get_best_move

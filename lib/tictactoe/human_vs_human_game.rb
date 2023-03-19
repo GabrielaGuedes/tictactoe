@@ -1,6 +1,6 @@
-require_relative './board.rb'
-require_relative './game.rb'
-require_relative './human_player.rb'
+require_relative './board'
+require_relative './game'
+require_relative './human_player'
 
 module Tictactoe
   class HumanVsHumanGame < Game

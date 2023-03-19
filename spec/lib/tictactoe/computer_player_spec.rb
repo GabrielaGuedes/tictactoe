@@ -1,5 +1,5 @@
-require_relative '../../../lib/tictactoe/computer_player.rb'
-require_relative '../../../lib/tictactoe/board.rb'
+require_relative '../../../lib/tictactoe/computer_player'
+require_relative '../../../lib/tictactoe/board'
 
 RSpec.describe Tictactoe::ComputerPlayer do
   let(:marker) { Tictactoe::Board::MARKERS[0] }
@@ -14,13 +14,13 @@ RSpec.describe Tictactoe::ComputerPlayer do
       before do
         board.fill_spot(center_spot, other_marker)
       end
-  
+
       it 'raises not implemented error' do
         expect { play_turn }.to raise_error(NotImplementedError)
       end
     end
 
-    context 'when center spot is not yet filled' do  
+    context 'when center spot is not yet filled' do
       it 'fills center spot' do
         expect { play_turn }.to change { board.to_a[center_spot] }.to(marker)
       end

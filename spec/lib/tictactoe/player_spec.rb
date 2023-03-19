@@ -1,5 +1,5 @@
-require_relative '../../../lib/tictactoe/player.rb'
-require_relative '../../../lib/tictactoe/board.rb'
+require_relative '../../../lib/tictactoe/player'
+require_relative '../../../lib/tictactoe/board'
 
 RSpec.describe Tictactoe::Player do
   describe '#initialize' do

@@ -2,7 +2,6 @@ require 'matrix'
 
 module Utils
   class Matrix < Matrix
-
     def assign_value_to_array_position(value, array_position)
       self[*row_column_from_array_position(array_position)] = value
     end
@@ -19,10 +18,10 @@ module Utils
       return to_enum :each, which unless block_given?
 
       return super(which) unless which == :inverse_diagonal
-      
+
       last = column_count - 1
       @rows.each_with_index do |row, row_index|
-        yield row.fetch(last - row_index){return self}
+        yield row.fetch(last - row_index) { return self }
       end
 
       self

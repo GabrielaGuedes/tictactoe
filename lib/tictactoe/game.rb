@@ -1,8 +1,8 @@
-require_relative './board.rb'
-require_relative './human_player.rb'
-require_relative './easy_computer_player.rb'
-require_relative './medium_computer_player.rb'
-require_relative './hard_computer_player.rb'
+require_relative './board'
+require_relative './human_player'
+require_relative './easy_computer_player'
+require_relative './medium_computer_player'
+require_relative './hard_computer_player'
 
 module Tictactoe
   class Game
@@ -25,7 +25,7 @@ module Tictactoe
 
     def start
       print_game_start
-      run_game while !game_finished?
+      run_game until game_finished?
       puts 'Game over'
     end
 

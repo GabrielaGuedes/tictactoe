@@ -1,7 +1,7 @@
-require_relative '../../../lib/tictactoe/human_vs_computer_game.rb'
-require_relative '../../../lib/tictactoe/hard_computer_player.rb'
-require_relative '../../../lib/tictactoe/human_player.rb'
-require_relative '../../../lib/tictactoe/board.rb'
+require_relative '../../../lib/tictactoe/human_vs_computer_game'
+require_relative '../../../lib/tictactoe/hard_computer_player'
+require_relative '../../../lib/tictactoe/human_player'
+require_relative '../../../lib/tictactoe/board'
 
 RSpec.describe Tictactoe::HumanVsComputerGame do
   describe '#initialize' do
@@ -22,7 +22,7 @@ RSpec.describe Tictactoe::HumanVsComputerGame do
     it 'finishes the game after 3 rounds (with specific inputs)' do
       allow_any_instance_of(Tictactoe::HumanPlayer).to receive(:gets).and_return(*specific_inputs)
       human_vs_computer_game.start
-      expect(human_vs_computer_game.board.game_is_over_with_winner? || human_vs_computer_game.board.tie?).to eq(true)            
+      expect(human_vs_computer_game.board.game_is_over_with_winner? || human_vs_computer_game.board.tie?).to eq(true)
     end
   end
 end

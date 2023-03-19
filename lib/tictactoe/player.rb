@@ -1,6 +1,5 @@
 module Tictactoe
   class Player
-
     attr_accessor :marker, :board
 
     def initialize(marker, board)

@@ -1,4 +1,4 @@
-require_relative '../../../lib/utils/matrix.rb'
+require_relative '../../../lib/utils/matrix'
 
 RSpec.describe Utils::Matrix do
   let(:matrix) { described_class[%w[0 1 2], %w[3 4 5], %w[6 7 8]] }
@@ -15,7 +15,7 @@ RSpec.describe Utils::Matrix do
         expect(matrix.value_at_array_position(position)).to eq(value)
       end
     end
-    
+
     context 'when position is bigger than the matrix' do
       let(:position) { 12 }
       let(:value) { 60 }
@@ -36,7 +36,7 @@ RSpec.describe Utils::Matrix do
         expect(value).to eq('7')
       end
     end
-    
+
     context 'when position is bigger than the matrix' do
       let(:position) { 12 }
 
@@ -44,7 +44,7 @@ RSpec.describe Utils::Matrix do
         expect(value).to eq(nil)
       end
     end
-    
+
     context 'when position is 0' do
       let(:position) { 0 }
 
