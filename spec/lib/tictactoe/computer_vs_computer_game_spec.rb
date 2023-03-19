@@ -21,7 +21,8 @@ RSpec.describe Tictactoe::ComputerVsComputerGame do
 
     it 'finishes the game after some rounds' do
       computer_vs_computer_game.start
-      expect(computer_vs_computer_game.board.game_is_over_with_winner? || computer_vs_computer_game.board.tie?).to eq(true)
+      expect(computer_vs_computer_game.board.game_is_over_with_winner? ||
+        computer_vs_computer_game.board.tie?).to eq(true)
     end
   end
 end

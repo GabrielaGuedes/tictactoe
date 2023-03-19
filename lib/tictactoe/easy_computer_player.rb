@@ -6,7 +6,7 @@ module Tictactoe
   class EasyComputerPlayer < ComputerPlayer
     private
 
-    def get_best_move
+    def best_move
       random_spot
     end
   end

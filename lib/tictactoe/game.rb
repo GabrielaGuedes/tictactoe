@@ -25,6 +25,10 @@ module Tictactoe
       eval("Tictactoe::#{Game::MODES[mode]}Game").new(difficult).start
     end
 
+    def initialize(_difficult)
+      @board = Tictactoe::Board.new
+    end
+
     def start
       print_game_start
       run_game until game_finished?

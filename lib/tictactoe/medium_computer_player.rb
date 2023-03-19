@@ -6,7 +6,7 @@ module Tictactoe
   class MediumComputerPlayer < ComputerPlayer
     private
 
-    def get_best_move
+    def best_move
       return random_spot if should_perform_easy_move?
 
       smart_spot || random_spot

@@ -10,7 +10,7 @@ require_relative './hard_computer_player'
 module Tictactoe
   class ComputerVsComputerGame < Game
     def initialize(difficult)
-      @board = Tictactoe::Board.new
+      super
       @player_one = eval("Tictactoe::#{Game::DIFFICULTS[difficult]}ComputerPlayer").new(Tictactoe::Board::MARKERS[1],
                                                                                         board)
       @player_two = eval("Tictactoe::#{Game::DIFFICULTS[difficult]}ComputerPlayer").new(Tictactoe::Board::MARKERS[0],

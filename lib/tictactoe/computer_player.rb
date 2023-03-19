@@ -10,10 +10,10 @@ module Tictactoe
     def spot
       return center_spot if board.center_spot_available?
 
-      get_best_move
+      best_move
     end
 
-    def get_best_move
+    def best_move
       raise NotImplementedError
     end
 

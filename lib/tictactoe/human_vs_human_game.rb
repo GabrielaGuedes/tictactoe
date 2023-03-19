@@ -7,7 +7,7 @@ require_relative './human_player'
 module Tictactoe
   class HumanVsHumanGame < Game
     def initialize(_difficult)
-      @board = Tictactoe::Board.new
+      super
       @player_one = Tictactoe::HumanPlayer.new(Tictactoe::Board::MARKERS[1], board)
       @player_two = Tictactoe::HumanPlayer.new(Tictactoe::Board::MARKERS[0], board)
     end
