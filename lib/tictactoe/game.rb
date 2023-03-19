@@ -4,43 +4,45 @@ require_relative './easy_computer_player.rb'
 require_relative './medium_computer_player.rb'
 require_relative './hard_computer_player.rb'
 
-class Game
-  attr_accessor :board, :player_one, :player_two
+module Tictactoe
+  class Game
+    attr_accessor :board, :player_one, :player_two
 
-  DIFFICULTS = %w[Easy Medium Hard]
+    DIFFICULTS = %w[Easy Medium Hard]
+    MODES = %w[HumanVsHuman HumanVsComputer ComputerVsComputer]
 
-  def self.start
-    puts "Select your difficult: \n0. Easy\n1. Medium\n2. Hard"
-    difficult = gets.chomp.to_i
-    new(difficult).start
-  end
+    def self.start
+      puts "Select your mode: \n0. Human vs. Human\n1. Human vs. Computer\n2. Computer vs. Computer"
+      mode = gets.chomp.to_i
 
-  def initialize(difficult)
-    @board = Tictactoe::Board.new
-    @player_one = Tictactoe::HumanPlayer.new(Tictactoe::Board::MARKERS[1], board)
-    @player_two = eval("Tictactoe::#{DIFFICULTS[difficult]}ComputerPlayer").new(Tictactoe::Board::MARKERS[0], board)
-  end
+      if mode != 0
+        puts "Select your difficult: \n0. Easy\n1. Medium\n2. Hard"
+        difficult = gets.chomp.to_i
+      end
 
-  def start
-    print_game_start
-    run_game while !game_finished?
-    puts 'Game over'
-  end
+      eval("Tictactoe::#{Game::MODES[mode]}Game").new(difficult).start
+    end
 
-  private
+    def start
+      print_game_start
+      run_game while !game_finished?
+      puts 'Game over'
+    end
 
-  def print_game_start
-    board.print_board
-    puts 'Enter [0-8]:'
-  end
+    private
 
-  def run_game
-    player_one.play_turn
-    player_two.play_turn if !game_finished?
-    board.print_board
-  end
+    def print_game_start
+      board.print_board
+    end
 
-  def game_finished?
-    board.game_is_over_with_winner? || board.tie?
+    def run_game
+      player_one.play_turn
+      player_two.play_turn unless game_finished?
+      board.print_board
+    end
+
+    def game_finished?
+      board.game_is_over_with_winner? || board.tie?
+    end
   end
 end

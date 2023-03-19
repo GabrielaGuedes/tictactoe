@@ -8,6 +8,7 @@ module Tictactoe
     private
     
     def spot
+      puts 'Enter [0-8]:'
       chosen_spot = gets.chomp
       return chosen_spot.to_i if valid_spot(chosen_spot)
 
