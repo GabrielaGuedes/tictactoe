@@ -10,21 +10,6 @@ module Tictactoe
   class Game
     attr_accessor :board, :player_one, :player_two
 
-    DIFFICULTS = %w[Easy Medium Hard].freeze
-    MODES = %w[HumanVsHuman HumanVsComputer ComputerVsComputer].freeze
-
-    def self.start
-      puts "Select your mode: \n0. Human vs. Human\n1. Human vs. Computer\n2. Computer vs. Computer"
-      mode = gets.chomp.to_i
-
-      if mode != 0
-        puts "Select your difficult: \n0. Easy\n1. Medium\n2. Hard"
-        difficult = gets.chomp.to_i
-      end
-
-      eval("Tictactoe::#{Game::MODES[mode]}Game").new(difficult).start
-    end
-
     def initialize(_difficult)
       @board = Tictactoe::Board.new
     end

@@ -15,7 +15,7 @@ RSpec.describe Tictactoe::HumanPlayer do
       subject(:play_turn) { human_player.play_turn }
 
       it 'fills the board correctly' do
-        allow(human_player).to receive(:gets).and_return(spot)
+        allow(Utils::InputReceiver).to receive(:gets).and_return(spot)
         expect { play_turn }.to change { board.to_a[spot.to_i] }.to(marker)
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe Tictactoe::HumanPlayer do
       end
 
       it 'asks the input again and fill the other [correct] spot' do
-        allow(human_player).to receive(:gets).and_return(busy_spot, correct_spot)
+        allow(Utils::InputReceiver).to receive(:gets).and_return(busy_spot, correct_spot)
         expect { play_turn }.to change { board.to_a[correct_spot.to_i] }.to(marker)
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe Tictactoe::HumanPlayer do
       subject(:play_turn) { human_player.play_turn }
 
       it 'asks the input again' do
-        allow(human_player).to receive(:gets).and_return(outside_range_spot, correct_spot)
+        allow(Utils::InputReceiver).to receive(:gets).and_return(outside_range_spot, correct_spot)
         expect { play_turn }.to change { board.to_a[correct_spot.to_i] }.to(marker)
         expect(board.available_spots.length).to eq(8)
       end
@@ -56,7 +56,7 @@ RSpec.describe Tictactoe::HumanPlayer do
       subject(:play_turn) { human_player.play_turn }
 
       it 'asks the input again' do
-        allow(human_player).to receive(:gets).and_return(invalid_spot, correct_spot)
+        allow(Utils::InputReceiver).to receive(:gets).and_return(invalid_spot, correct_spot)
         expect { play_turn }.to change { board.to_a[correct_spot.to_i] }.to(marker)
         expect(board.available_spots.length).to eq(8)
       end

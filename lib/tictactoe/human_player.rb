@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative './player'
+require_relative '../utils/input_receiver'
 
 module Tictactoe
   class HumanPlayer < Player
@@ -9,12 +10,9 @@ module Tictactoe
     private
 
     def spot
-      puts 'Enter [0-8]:'
-      chosen_spot = gets.chomp
-      return chosen_spot.to_i if valid_spot(chosen_spot)
-
-      puts 'Invalid input, try again.'
-      spot
+      message = 'Enter [0-8]:'
+      spot_input = Utils::InputReceiver.valid_input(message) { |chosen_spot| valid_spot(chosen_spot) }
+      spot_input.to_i
     end
 
     def valid_spot(chosen_spot)
