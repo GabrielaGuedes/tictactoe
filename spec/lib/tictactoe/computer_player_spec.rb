@@ -7,7 +7,7 @@ RSpec.describe Tictactoe::ComputerPlayer do
   let(:marker) { Tictactoe::Board::MARKERS[0] }
   let(:other_marker) { Tictactoe::Board::MARKERS[1] }
   let(:board) { Tictactoe::Board.new }
-  let(:computer_player) { described_class.new(marker, board) }
+  let(:computer_player) { described_class.new(marker, board, 1) }
   let(:center_spot) { Tictactoe::Board::CENTER_SPOT_INDEX }
   subject(:play_turn) { computer_player.play_turn }
 

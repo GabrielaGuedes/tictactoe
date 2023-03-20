@@ -6,7 +6,7 @@ require_relative '../../../lib/tictactoe/board'
 RSpec.describe Tictactoe::HumanPlayer do
   let(:marker) { Tictactoe::Board::MARKERS[1] }
   let(:board) { Tictactoe::Board.new }
-  let(:human_player) { described_class.new(marker, board) }
+  let(:human_player) { described_class.new(marker, board, 1) }
 
   describe '#play_turn' do
     context 'when valid spot' do

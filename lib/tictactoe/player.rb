@@ -2,14 +2,16 @@
 
 module Tictactoe
   class Player
-    attr_accessor :marker, :board
+    attr_accessor :marker, :board, :number
 
-    def initialize(marker, board)
+    def initialize(marker, board, number)
       @marker = marker
       @board = board
+      @number = number
     end
 
     def play_turn
+      puts "Player #{number} turn!"
       fill_spot(spot)
     end
 

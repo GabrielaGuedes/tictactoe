@@ -7,7 +7,7 @@ RSpec.describe Tictactoe::HardComputerPlayer do
   let(:marker) { Tictactoe::Board::MARKERS[0] }
   let(:other_marker) { Tictactoe::Board::MARKERS[1] }
   let(:board) { Tictactoe::Board.new }
-  let(:computer_player) { described_class.new(marker, board) }
+  let(:computer_player) { described_class.new(marker, board, 1) }
 
   describe '#play_turn' do
     context 'when computer is about to win' do

@@ -6,7 +6,7 @@ require_relative '../../../lib/tictactoe/board'
 RSpec.describe Tictactoe::MediumComputerPlayer do
   let(:marker) { Tictactoe::Board::MARKERS[0] }
   let(:board) { Tictactoe::Board.new }
-  let(:computer_player) { described_class.new(marker, board) }
+  let(:computer_player) { described_class.new(marker, board, 1) }
 
   describe '#play_turn' do
     subject(:play_turn) { computer_player.play_turn }

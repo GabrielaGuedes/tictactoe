@@ -8,8 +8,8 @@ module Tictactoe
   class HumanVsHumanGame < Game
     def initialize(_difficult)
       super
-      @player_one = Tictactoe::HumanPlayer.new(Tictactoe::Board::MARKERS[1], board)
-      @player_two = Tictactoe::HumanPlayer.new(Tictactoe::Board::MARKERS[0], board)
+      @player_one = Tictactoe::HumanPlayer.new(Tictactoe::Board::MARKERS[1], board, 1)
+      @player_two = Tictactoe::HumanPlayer.new(Tictactoe::Board::MARKERS[0], board, 2)
     end
 
     private

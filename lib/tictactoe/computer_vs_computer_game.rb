@@ -13,9 +13,9 @@ module Tictactoe
     def initialize(difficult)
       super
       @player_one = eval("Tictactoe::#{Tictactoe::Cli::DIFFICULTS[difficult]}ComputerPlayer").new(Tictactoe::Board::MARKERS[1],
-                                                                                                  board)
+                                                                                                  board, 1)
       @player_two = eval("Tictactoe::#{Tictactoe::Cli::DIFFICULTS[difficult]}ComputerPlayer").new(Tictactoe::Board::MARKERS[0],
-                                                                                                  board)
+                                                                                                  board, 2)
     end
 
     private
