@@ -7,7 +7,6 @@ require_relative './computer_vs_computer_game'
 
 module Tictactoe
   class Cli
-
     DIFFICULTS = %w[Easy Medium Hard].freeze
     MODES = %w[HumanVsHuman HumanVsComputer ComputerVsComputer].freeze
 
@@ -27,12 +26,14 @@ module Tictactoe
 
     def select_difficult
       message = "\nSelect your difficult: \n0. Easy\n1. Medium\n2. Hard"
-      difficult_input = Utils::InputReceiver.valid_input(message) { |chosen_difficult| !DIFFICULTS[chosen_difficult.to_i].nil? }
+      difficult_input = Utils::InputReceiver.valid_input(message) do |chosen_difficult|
+        !DIFFICULTS[chosen_difficult.to_i].nil?
+      end
       @difficult = difficult_input.to_i
     end
 
     def mode_with_computer?
-      MODES[mode].include? "Computer"
+      MODES[mode].include? 'Computer'
     end
   end
 end

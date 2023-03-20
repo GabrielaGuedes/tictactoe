@@ -20,7 +20,7 @@ RSpec.describe Utils::InputReceiver do
 
       it 'asks another input' do
         allow(described_class).to receive(:gets).and_return(wrong_input, desired_input)
-        expect(valid_input).to eq(desired_input)        
+        expect(valid_input).to eq(desired_input)
       end
     end
   end

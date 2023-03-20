@@ -2,7 +2,6 @@
 
 module Utils
   class InputReceiver
-
     def self.valid_input(message, &validation_block)
       puts message
       input = gets.chomp

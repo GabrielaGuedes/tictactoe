@@ -16,6 +16,7 @@ RSpec.describe Tictactoe::HumanVsHumanGame do
     end
   end
 
+  # rubocop:disable Layout/CommentIndentation
   describe '#start' do
     let(:human_vs_human_game) { Tictactoe::HumanVsHumanGame.new(nil) }
     let(:specific_inputs) { %w[0 3 1 7 2] } #  O  O  O
@@ -28,4 +29,5 @@ RSpec.describe Tictactoe::HumanVsHumanGame do
       expect(human_vs_human_game.board.game_is_over_with_winner? || human_vs_human_game.board.tie?).to eq(true)
     end
   end
+  # rubocop:enable Layout/CommentIndentation
 end
