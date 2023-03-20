@@ -10,3 +10,7 @@ Style/EvalWithLocation:
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - "spec/lib/utils/matrix_spec.rb"
